@@ -11,9 +11,9 @@ Within the office network:
 
 Within the remote network:
 1. Connect to office VPN (so that packets can be sent to the server machine from your remote machine).
-2. Launch **WakeOnLANClient.exe** (and allow it through firewall).
-![WakeOnLANClient.exe UI](https://raw.githubusercontent.com/simon-yeunglm/WakeOnLAN/main/screenshots/client_ui.png)
+2. Launch **WakeOnLANClient.exe** (and allow it through firewall).  
+![WakeOnLANClient.exe UI](/screenshots/client_ui.png)
 3. Enter the **Server IP** and **MAC Address** of your office PC.
 4. Click the **Wake** button.
-5. *Windows Remote Desktop App* will be launched automatically if your office PC is turned on.
-![WakeOnLANClient.exe connect success](https://raw.githubusercontent.com/simon-yeunglm/WakeOnLAN/main/screenshots/client_connect.png)
+5. *Windows Remote Desktop App* will be launched automatically if your office PC is turned on.  
+![WakeOnLANClient.exe connect success](/screenshots/client_connect.png)
