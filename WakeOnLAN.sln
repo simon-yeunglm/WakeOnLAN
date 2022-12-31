@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WakeOnLANServer", "WakeOnLANServer\WakeOnLANServer.csproj", "{FA3C65EF-8150-4128-8BC9-D435FF8019F1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A} = {4A1648CE-F9F9-41D2-92A9-86D72F258C9A}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WakeOnLANClient", "WakeOnLANClient\WakeOnLANClient.csproj", "{F93FAEB8-EFD5-4589-BFDD-9B4E0BEA04A7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A} = {4A1648CE-F9F9-41D2-92A9-86D72F258C9A}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WakeOnLANCommon", "WakeOnLANCommon\WakeOnLANCommon.csproj", "{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA3C65EF-8150-4128-8BC9-D435FF8019F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA3C65EF-8150-4128-8BC9-D435FF8019F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA3C65EF-8150-4128-8BC9-D435FF8019F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA3C65EF-8150-4128-8BC9-D435FF8019F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F93FAEB8-EFD5-4589-BFDD-9B4E0BEA04A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93FAEB8-EFD5-4589-BFDD-9B4E0BEA04A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93FAEB8-EFD5-4589-BFDD-9B4E0BEA04A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93FAEB8-EFD5-4589-BFDD-9B4E0BEA04A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {835BACCF-857E-4A30-B7DE-ED62B9FEF943}
+	EndGlobalSection
+EndGlobal
