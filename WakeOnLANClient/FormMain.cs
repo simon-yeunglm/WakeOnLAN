@@ -248,35 +248,43 @@ namespace WakeOnLANClient
 			byte[] sendData = WakeOnLANUtil.MessageCreate_Wake_PC_With_MAC_Address(MACAddress);
 
 			// send Wake On LAN message to server
-			bool isSendOk = true;
+			const int	retryCntMax = 3;
+			int			retryCnt	= 0;
+			bool		isSendRecvOk= false;
+			bool		isSendOk	= true;
 			IPEndPoint ip = new IPEndPoint(IPAddress.Parse(ServerIP), WakeOnLANUtil.ServerSendPort);
 			Socket socket= new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-			try
-			{
-				socket.SendTo(sendData, sendData.Length, SocketFlags.None, ip);
-			}
-			catch
-			{
-				isSendOk = false;
-			}
 
+			while ((!isSendRecvOk) && retryCnt < retryCntMax)
+			{
+				try
+				{
+					socket.SendTo(sendData, sendData.Length, SocketFlags.None, ip);
+				}
+				catch
+				{
+					isSendOk = false;
+				}
+
+				// Wait for server to reply
+				int receivedDataLength = -1;
+				try
+				{
+					byte[] recvData = new byte[1024];
+					EndPoint Remote = (EndPoint)new IPEndPoint(IPAddress.Parse(ServerIP), 0);
+					receivedDataLength = ServerReplySocket.ReceiveFrom(recvData, ref Remote);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("client Failed to receive data: " + ex.ToString());
+				}
+				isSendRecvOk = isSendOk && receivedDataLength != -1;
+				++retryCnt;
+			}
 			socket.Close();
 
-			// Wait for server to reply
-			int receivedDataLength = -1;
-			try
-			{
-				byte[] recvData = new byte[1024];
-				EndPoint Remote = (EndPoint)new IPEndPoint(IPAddress.Parse(ServerIP), 0);
-				receivedDataLength = ServerReplySocket.ReceiveFrom(recvData, ref Remote);
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("client Failed to receive data: " + ex.ToString());
-			}
-
 			// log
-			if (isSendOk && receivedDataLength != -1)
+			if (isSendRecvOk)
 			{
 				Log("Wake On LAN message sent to broadcast server.");
 
@@ -317,7 +325,7 @@ namespace WakeOnLANClient
         private async void timer_machine_ping_Tick(object sender, EventArgs e)
 		{
 			// check is time out
-			const int WaitTimeMax	= 60; // sec
+			const int WaitTimeMax	= 60 * 3; // sec
 			int waitCntMax			= WaitTimeMax * 1000 / timer_machine_ping.Interval;
 			++MachinePingCnt;
 			if (MachinePingCnt > waitCntMax)
