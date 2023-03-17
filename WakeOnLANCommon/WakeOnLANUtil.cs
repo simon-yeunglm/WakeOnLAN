@@ -105,6 +105,83 @@ namespace WakeOnLANCommon
 					WakeOnLANUtil.IntToHexString(MACAddress[4]) + "-" +
 					WakeOnLANUtil.IntToHexString(MACAddress[5]);
 		}
+		
+		public static bool ValidateMACAddress(string MACAddressStr, ref byte[] MACAddress)
+		{
+			string[] str = MACAddressStr.Split('.');
+			if (str.Length != 6)
+			{
+				str = MACAddressStr.Split('-');
+				if (str.Length != 6)
+				{
+					str = MACAddressStr.Split(':');
+					if (str.Length != 6)
+						return false;
+				}
+			}
+
+			byte val0, val1, val2, val3, val4, val5;
+			bool ok0 = ValidateMACAddressDigit(str[0], out val0);
+			bool ok1 = ValidateMACAddressDigit(str[1], out val1);
+			bool ok2 = ValidateMACAddressDigit(str[2], out val2);
+			bool ok3 = ValidateMACAddressDigit(str[3], out val3);
+			bool ok4 = ValidateMACAddressDigit(str[4], out val4);
+			bool ok5 = ValidateMACAddressDigit(str[5], out val5);
+
+			if (ok0 && ok1 && ok2 && ok3 && ok4 && ok5)
+			{
+				MACAddress[0] = val0;
+				MACAddress[1] = val1;
+				MACAddress[2] = val2;
+				MACAddress[3] = val3;
+				MACAddress[4] = val4;
+				MACAddress[5] = val5;
+				return true;
+			}
+			else
+				return false;
+		}
+
+		private static bool ValidateMACAddressDigit(string str, out byte val)
+		{
+			val = 0;
+			if (str.Length != 2)
+				return false;
+
+			byte val0, val1;
+			bool ok0 = ValidateHexDigit(str[0], out val0);
+			bool ok1 = ValidateHexDigit(str[1], out val1);
+
+			if (ok0 && ok1)
+			{
+				val = (byte)(val0 * 16 + val1);
+				return true;
+			}
+			else
+				return false;
+		}
+
+		private static bool ValidateHexDigit(char chr, out byte val)
+		{
+			val = 0;
+			if (chr >= '0' && chr <= '9')
+			{
+				val = (byte)(chr - '0');
+				return true;
+			}
+			else if (chr >= 'a' && chr <= 'f')
+			{
+				val = (byte)(chr - 'a' + 10);
+				return true;
+			}
+			else if (chr >= 'A' && chr <= 'F')
+			{
+				val = (byte)(chr - 'A' + 10);
+				return true;
+			}
+			else
+				return false;
+		}
 
 		private static int MessageGetContentSize(MessageType type)
 		{

@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WakeOnLANClient", "WakeOnLA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WakeOnLANCommon", "WakeOnLANCommon\WakeOnLANCommon.csproj", "{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WakeOnLANMessage", "WakeOnLANMessage\WakeOnLANMessage.csproj", "{08D52EA7-5C1B-4C53-A38B-CBCD26909699}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A1648CE-F9F9-41D2-92A9-86D72F258C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08D52EA7-5C1B-4C53-A38B-CBCD26909699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08D52EA7-5C1B-4C53-A38B-CBCD26909699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08D52EA7-5C1B-4C53-A38B-CBCD26909699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08D52EA7-5C1B-4C53-A38B-CBCD26909699}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

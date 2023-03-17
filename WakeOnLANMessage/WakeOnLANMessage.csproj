@@ -4,10 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputPath>..\bin\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</OutputPath>
-	<IntermediateOutputPath>..\build\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+    <IntermediateOutputPath>..\build\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntermediateOutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

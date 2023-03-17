@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WakeOnLANMessage": {
+      "commandName": "Project",
+      "commandLineArgs": "11-22-33-DD-EE-FF WakeOnLAN.msg"
+    }
+  }
+}

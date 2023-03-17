@@ -212,22 +212,20 @@ namespace WakeOnLANServer
 					}
 
 					int recvHeader = WakeOnLANUtil.ByteArrayToInt(recvData, 0);
-					WakeOnLANUtil.MessageType recvType = (WakeOnLANUtil.MessageType)WakeOnLANUtil.ByteArrayToInt(recvData, 4);
-					int recvSize = WakeOnLANUtil.ByteArrayToInt(recvData, 8);
-					int recvFooter = WakeOnLANUtil.ByteArrayToInt(recvData, recvSize - 4);
-
 					if (recvHeader != WakeOnLANUtil.MessageHeader)
 					{
 						Console.WriteLine("Message Magic Header Mis-match");
 						continue;
 					}
 
+					int recvSize = WakeOnLANUtil.ByteArrayToInt(recvData, 8);
 					if (recvSize != receivedDataLength)
 					{
 						Console.WriteLine("Receive size mis-match {0} - {1}", recvSize, receivedDataLength);
 						continue;
 					}
 
+					int recvFooter = WakeOnLANUtil.ByteArrayToInt(recvData, recvSize - 4);
 					if (recvFooter != WakeOnLANUtil.MessageFooter)
 					{
 						Console.WriteLine("Message Magic Footer Mis-match");
@@ -235,8 +233,8 @@ namespace WakeOnLANServer
 					}
 
 					Console.WriteLine("Message received from {0}.", Remote.ToString());
-
 					Debug.Assert((int)WakeOnLANUtil.MessageType.Num == 4, "Please update Message Type");
+					WakeOnLANUtil.MessageType recvType = (WakeOnLANUtil.MessageType)WakeOnLANUtil.ByteArrayToInt(recvData, 4);
 					if (recvType == WakeOnLANUtil.MessageType.Wake_PC_With_MAC_Address)
 						HandleMessage_WakePCWithMACAddress(server, recvData, Remote);
 					else if (recvType == WakeOnLANUtil.MessageType.PC_Awaken_Query)
